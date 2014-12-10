@@ -1,0 +1,41 @@
+#!/bin/bash
+### Detect the type of system (Ubuntu or Mac->Darwin)
+unamestr=`uname`
+if [ $unamestr == "Darwin" ]; then
+	NGXISTPATH = "";
+	APCHEISTPATH = "";
+	SERVERDIR = "";
+else
+	NGXISTPATH = "";
+	APCHEISTPATH = "";
+	SERVERDIR = "";
+fi
+case $1 in
+	"nginx")
+		echo "nginx config will be installed"
+		read -p "alright? (y/n) " response
+
+		if [ $response == "y" ]; then
+
+			if [ $2 == "" ]; then
+        		echo -n "Missing vhost name.Exiting..";
+        		exit 0
+			else
+				echo -n "Going to create a new vhost in the server named: "$2
+			fi
+		else
+			echo -n "Exiting Setup."
+			exit 0
+        fi
+		break
+		;;
+	"apache")
+		echo "apache config will be installed"
+		break
+		;;
+	*)
+		echo "missing the server type.Exiting."
+		exit 0;
+		break
+		;;
+esac
