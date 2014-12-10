@@ -1,4 +1,4 @@
-sitechecking
+Site Checking
 ============
 
 server up time testing and virtual hosts creation automation
